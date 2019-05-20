@@ -9,7 +9,5 @@ replace="<script>if(window){window.uuid=\"$INSTANCE_ID\";}else{var window={uuid:
 replaceEscaped=$(sed "$htmlEscapeStr" <<< "$replace")
 
 if ! grep -q window.uuid $indexFile; then
-  echo $findEscaped
   sed -i -e "s/$findEscaped/$replaceEscaped/g" $indexFile
 fi
-
